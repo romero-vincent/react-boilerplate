@@ -1,0 +1,39 @@
+{
+  "name": "@tm1/shadow",
+  "version": "1.0.0",
+  "description": "TM1 frontend tech migration from AngularJS to React",
+  "main": "index.js",
+  "scripts": {
+    "test:generate-output": "jest --json --outputFile=.jest-test-results.json || true",
+    "test": "jest --config .jest/config.js",
+    "start": "NODE_ENV=development webpack-dev-server --config .webpack.config.js",
+    "prebuild:storybook": "npm run test:generate-output",
+    "storybook": "start-storybook -p 9001 -c .storybook"
+  },
+  "author": "vincent.romero@ticketmaster.com",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-centered": "^5.0.0",
+    "@storybook/addon-jest": "^5.0.0",
+    "@storybook/react": "^5.0.0",
+    "@types/jest": "^24.0.11",
+    "babel-loader": "^8.0.5",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.10.0",
+    "enzyme-matchers": "^7.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.3.1",
+    "jest-enzyme": "^7.0.2",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1",
+    "webpack-merge": "^4.2.1"
+  }
+}
