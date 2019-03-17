@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import Welcome from 'components/Welcome';
+
+
+let stor
 
 class App extends Component {
     constructor(props) {
