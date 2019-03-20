@@ -1,5 +1,5 @@
-import { VisibilityFilters } from '../../src/actions';
-import rootReducer from '../../src/reducers';
+import { VisibilityFilters } from '../../actions';
+import rootReducer from '../index';
 
 describe('combined reducers', () => {
     it('should return initial state', () => {

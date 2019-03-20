@@ -6,10 +6,10 @@ module.exports = {
 
     coverageDirectory: 'coverage',
     roots: [
-        "../src",
-        "../tests"
+        "../src"
     ],
     transformIgnorePatterns: ['/node_modules/'],
+    testRegex: ['/__tests__/.*'],
     setupFiles: [
         "../.enzyme/config.js"
     ],

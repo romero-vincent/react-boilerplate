@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import AddTodo from '../components/AddTodo';
+import TodoList from '../components/TodoList';
 
-
-let stor
-
-class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
-    render() {
-        return <Welcome name="React" />;
-    }
+const App = () => {
+    return (
+        <div>
+            <AddTodo/>
+            <TodoList/>
+        </div>
+        
+    );
 }
 
 export default App;

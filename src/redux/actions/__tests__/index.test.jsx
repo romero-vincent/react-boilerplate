@@ -1,5 +1,5 @@
 import { ActionTypes, VisibilityFilters,
-    addTodo, toggleTodo, setVisibilityFilter } from '../../src/actions'
+    addTodo, toggleTodo, setVisibilityFilter } from '../../actions'
 
 describe('actions', () => {
     it('should create an action to add a todo', () => {

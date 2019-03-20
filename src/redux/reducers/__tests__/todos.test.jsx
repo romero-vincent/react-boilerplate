@@ -1,5 +1,6 @@
-import reducer from '../../src/reducers/todos';
-import { addTodo } from '../../src/actions';
+import { addTodo } from '../../actions' 
+import reducer from '../todos';
+
 
 describe('todos reducer', () => {
     it('should return initial state', () => {
@@ -26,13 +27,13 @@ describe('todos reducer', () => {
         expect(reducer(initialState, addTodo('Run Tests')))
             .toEqual([
                 {
-                    text: 'Use Redux',
+                    text: 'Run Tests',
                     completed: false
                 },
                 {
-                    text: 'Run Tests',
+                    text: 'Use Redux',
                     completed: false
-                }
+                },
             ]);
     });
 })

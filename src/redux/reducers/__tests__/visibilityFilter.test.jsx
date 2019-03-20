@@ -1,5 +1,5 @@
-import reducer from '../../src/reducers/visibilityFilter';
-import { ActionTypes, VisibilityFilters, setVisibilityFilter } from '../../src/actions';
+import reducer from '../visibilityFilter';
+import { ActionTypes, VisibilityFilters, setVisibilityFilter } from '../../actions';
 
 describe('visibilityFilter reducer', () => {
     it('should return initial state', () => {

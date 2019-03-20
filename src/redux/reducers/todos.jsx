@@ -1,23 +1,25 @@
-import { ActionTypes } from '../../src/actions';
+import { ActionTypes } from '../actions'
 
 const todos = (state = [], action) => {
     switch(action.type) {
         case ActionTypes.ADD_TODO:
             return [
-                ...state,
                 {
                     text: action.text,
                     completed: false
-                }
+                },
+                ...state
             ];
 
         case ActionTypes.TOGGLE_TODO:
-            return state.map((todo, index) => {
-                if (index === action.index) {
-                    return Object.assign({}, todo, {
-                        completed: !todo.completed
-                    });
+            return state.map((t, idx) => {
+                if (idx !== action.index) {
+                    return t
                 }
+                return {
+                    ...t,
+                    completed: !t.completed,
+                };
             });
 
         default:
