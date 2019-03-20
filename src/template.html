@@ -1,26 +1,47 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" >
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
     <title>Shadow — Webpack React Boilerplate</title>
   </head>
-  <body>
+  <body ng-app="myApp" ng-controller="AppController as ctrl">
     <noscript>
         You need to enable JavaScript to run this app.
     </noscript>
-
-    <div>
-      <label>Name:</label>
-      <input type="text" ng-model="yourName" placeholder="Enter a name here">
-      <hr>
-      <h1>Hello {{yourName}}!</h1>
-    </div>
-
-
     <div id="app"></div>
     <div id="profile"></div>
-
+    <ol><li ng-repeat="todo in ctrl.todos">{{todo.text}}</li></ol>
   </body>
+
+  <script type="text/javascript">
+    AppController['$inject'] = ['$scope', '$window']
+    function AppController($scope, $window) {
+        var vm = this;  
+        vm.todos = []
+        window.$store.subscribe(function() {
+          vm.todos = window.$store.getState()['todos']
+          $scope.$apply()
+        })
+    };
+
+    var directive = function () {
+        return {
+          scope: { todos: '@' },
+          template: `
+            Todo List (NG)
+            <ol>
+              <li ng-repeat="todo in $scope.todos track by $index">
+                {{todo.text}}
+              </li>
+            <ol>
+          `
+        };
+    };
+
+    angular.module('myApp', [])
+        .controller('AppController', AppController)
+        .directive('ngTodoList', directive);
+</script>
 </html>

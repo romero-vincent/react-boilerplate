@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addTodo } from '../redux/actions'
 
-const Todo = ({dispatch}) => {
+const AddTodo = ({dispatch}) => {
     let input;
     return (
         <div>
@@ -15,4 +15,4 @@ const Todo = ({dispatch}) => {
     );
 }
 
-export default connect()(Todo)
+export default connect()(AddTodo)
