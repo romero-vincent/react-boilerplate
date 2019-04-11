@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StrictTextfield renders correctly 1`] = `
+<div
+  class="text--input-regular text--input-top Inputstyles__FieldInputWrapper-sc-1vi2q2x-0 kRTYgI"
+>
+  <div
+    class="Inputstyles__ErrorBoxWrapper-sc-1vi2q2x-2 kGxjtl"
+  >
+    <input
+      aria-labelledby="zoo__label"
+      class="Inputstyles__FieldInputBox-sc-1vi2q2x-3 ePHaKb"
+      id="zoo__input"
+      name="zoo"
+      placeholder=""
+      type="text"
+      value=""
+    />
+    <label
+      aria-invalid="false"
+      class="Inputstyles__FieldErrorText-sc-1vi2q2x-4 kwcfuy"
+      role="alert"
+    />
+  </div>
+</div>
+`;

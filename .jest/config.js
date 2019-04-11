@@ -9,7 +9,7 @@ module.exports = {
         "../src"
     ],
     transformIgnorePatterns: ['/node_modules/'],
-    testRegex: ['/__tests__/.*'],
+    testRegex: ['/__tests__/.*.[js|jsx]$'],
     setupFiles: [
         "../.enzyme/config.js"
     ],

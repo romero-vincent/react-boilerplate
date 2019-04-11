@@ -6,5 +6,5 @@ export default function logger(store) {
         console.log('next state', store.getState())
         return result
         }
-    }
+    } 
 }

@@ -10,7 +10,15 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 loader: 'babel-loader',
                 exclude: /(node_modules)/
-            }
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                use: ['file-loader']
+            },
         ]
     },
     resolve: {
@@ -18,7 +26,7 @@ module.exports = {
             'node_modules',
             'src'
         ],
-        extensions: ['.js', '.jsx', '.json', '.css']
+        extensions: ['.js', '.jsx', '.json', '.css', 'woff2']
     },
     plugins: [
         new webpack.ProgressPlugin(),

@@ -71,3 +71,7 @@ $ yarn storybook
 # Test Components with Jest + Enzyme
 $ yarn test
 ```
+
+#### Build Redux-React App
+
+1. 

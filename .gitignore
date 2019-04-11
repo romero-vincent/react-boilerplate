@@ -1,6 +1,8 @@
 /node_modules
 /dist
 
+.idea/
+
 jest-test-results.json
 
 yarn.lock

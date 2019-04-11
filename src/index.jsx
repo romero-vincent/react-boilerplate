@@ -6,6 +6,8 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import rootReducer from './redux/reducers'
 
+import './fonts/style.css'
+
 import loggerMiddleware from './redux/middleware/logger'
 
 window.$store = createStore(rootReducer, applyMiddleware(loggerMiddleware));
