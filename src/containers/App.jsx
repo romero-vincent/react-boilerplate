@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import AddTodo from '../components/AddTodo'
-import ProfileDropDown from '../components/ProfileDropDown'
+import FilteredProfileDropdown from '../components/FilteredProfileDropdown'
 import { PopOver } from '@ticketmaster/aurora'
+import { connect } from 'react-redux'
+
+import { ViewFilters } from '../constants'
+import { setViewFilter } from '../redux/actions/actions'
 
 class App extends Component {
     constructor(props) {
         super(props);
-    
-
         this.buttonRef = React.createRef();
     }
 
@@ -16,40 +18,21 @@ class App extends Component {
     }
 
     render() {
-    
+        
         return (
             <div className="App" ref={ node => this.triggerRef = node }>
                 <button ref={this.buttonRef}>Open Me</button>
 
                 <AddTodo/>
 
-                <div className="ProfileDropDown">
-                    {/* view, isVisible */}
-                    <section className="ProfileDropDown__UserInfo" >
-                        {/* userName, userOrganization?, isUserAdmin, adminBadgeLabel? */}
-                    </section>
+                <FilteredProfileDropdown isVisible={false}/>
 
-                    <section className="ProfileDropDown__Menu">
-                        {/* view */}
-                        
-                        <div className="Menu__defaultView">
-                            {/* menuItems, onSelect */}
-                        </div>
-                        <div className="Menu__accessView">
-                            {/* menuItems, onSelect, heading */}
-                        </div>
-                    </section>
-                    
-                    <section className="ProfileDropDown__ChangePasswordForm">
-                        {/* view, onChangePasswordRequest, onChangePassswordFailed, onChangePasswordSuccess */}
-                        <div className="ChangePasswordForm__formView">
-                            {/* policyText, validations, errors, onChangePasswordRequest::onSubmit, onChangePassswordFailed::onError */}
-                        </div>
-                        <div className="ChangePasswordForm__successView">
-                            {/* message */}
-                        </div>
-                    </section>
-                </div>
+                <button onClick={() => {
+                    this.props.dispatch(setViewFilter(ViewFilters.SHOW_MENU))
+                }}>Toggle Menu</button>
+                <button onClick={() => {
+                    this.props.dispatch(setViewFilter(ViewFilters.SHOW_CHANGE_PASSWORD))
+                }}>Toggle ChangePassword</button>
 
                 {/* <ProfileDropDown trigger={this.buttonRef}
                     adminBadgeLabel={"ADMIN"}
@@ -63,4 +46,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default connect()(App);

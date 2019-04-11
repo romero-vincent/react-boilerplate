@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import todos from './todos';
 import visibilityFilter from './visibilityFilter';
-import profileDropDown from './profileDropDown';
+import profileDropdown from './profileDropdown';
 
 
-export default combineReducers({ todos, filter: visibilityFilter, profile: profileDropDown });
+export default combineReducers({ todos, filter: visibilityFilter, profileDropdown });
