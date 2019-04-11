@@ -92,6 +92,7 @@ class ChangePasswordForm extends React.Component {
     }
 
     handleSubmit(event) {
+        event.preventDefault();
         let { isPasswordConfirmed, isPristine } = this.state;
         let isValid = false;
 
@@ -112,7 +113,7 @@ class ChangePasswordForm extends React.Component {
         let oldPassword = this.oldPasswordElement.state.value;
         console.info('callback with', newPassword, oldPassword)
         if (onSubmit) onSubmit(newPassword, oldPassword);
-        event.preventDefault();
+        
     }
 
     render() {
@@ -154,7 +155,7 @@ class ChangePasswordForm extends React.Component {
 ChangePasswordForm.propType = {
     passwordPolicy: PropTypes.string,
     onSubmit: PropTypes.func.isRequired,
-    onCancel: PropTypes.func
+    onCancel: PropTypes.func.isRequired
 };
 
 ChangePasswordForm.defaultProps = {

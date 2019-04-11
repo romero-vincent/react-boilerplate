@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import AddTodo from '../components/AddTodo'
-import FilteredProfileDropdown from '../components/FilteredProfileDropdown'
+
 import { PopOver } from '@ticketmaster/aurora'
 import { connect } from 'react-redux'
 
-import { ViewFilters } from '../constants'
-import { setViewFilter } from '../redux/actions/actions'
+import { ViewFilters, MenuViewFilters } from '../constants'
+import { setViewFilter, setMenuViewFilter } from '../redux/actions/actions'
+
+import ProfileDropdown from '../components/ProfileDropdown'
 
 class App extends Component {
     constructor(props) {
@@ -25,13 +27,24 @@ class App extends Component {
 
                 <AddTodo/>
 
-                <FilteredProfileDropdown isVisible={false}/>
+                <ProfileDropdown
+                    menuHeading="My Acccount"
+                    menuItems={[
+                            { name:'', label: 'Access Settings', onSelect: () => {}},
+                            { name:'', label: 'Profile Settings', onSelect: () => {}},
+                            { name:'', label: 'Change Password', onSelect: () => {
+                                this.props.dispatch(setViewFilter(ViewFilters.SHOW_CHANGE_PASSWORD))
+                            }},
+                            { name:'', label: 'Sign Out', onSelect:  () => {}},
+                        ]}>
+                    
+                </ProfileDropdown>
 
                 <button onClick={() => {
                     this.props.dispatch(setViewFilter(ViewFilters.SHOW_MENU))
                 }}>Toggle Menu</button>
                 <button onClick={() => {
-                    this.props.dispatch(setViewFilter(ViewFilters.SHOW_CHANGE_PASSWORD))
+                    this.props.dispatch(setMenuViewFilter(MenuViewFilters.SHOW_LATEST))
                 }}>Toggle ChangePassword</button>
 
                 {/* <ProfileDropDown trigger={this.buttonRef}
