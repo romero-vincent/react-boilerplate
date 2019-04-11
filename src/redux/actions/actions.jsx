@@ -20,12 +20,12 @@ export const CLOSE_DROPDOWN = 'CLOSE_DROPDOWN'
 export const TOGGLE_DROPDOWN = 'TOGGLE_DROPDOWN'
 export const SET_VIEW_FILTER = 'SET_VIEW_FILTER'
 
-
-export const SET_MENU_VIEW_FILTER = 'SET_MENU_VIEW_FILTER'
 export const SELECT_MENU_ITEM = 'SELECT_MENU_ITEM'
+export const SET_MENU_VIEW_FILTER = 'SET_MENU_VIEW_FILTER'
 
 export const SET_CHANGE_PASSWORD_VIEW_FILTER = 'SET_CHANGE_PASSWORD_VIEW_FILTER'
 export const RESET_CHANGE_PASSWORD_FORM = 'RESET_CHANGE_PASSWORD_FORM'
+
 export const CHANGE_PASSWORD_SENT = 'CHANGE_PASSWORD_SENT'
 export const CHANGE_PASSWORD_FAILED = 'CHANGE_PASSWORD_FAILED'
 export const CHANGE_PASSWORD_SUCCESS = 'CHANGE_PASSWORD_SUCCESS'
@@ -41,14 +41,14 @@ export const setViewFilter = ( filter = ViewFilters.SHOW_MENU ) => ({
     filter
 })
 
-export const setMenuViewFilter = ( filter = MenuViewFilters.SHOW_DEFAULT ) => ({
-    type: SET_MENU_VIEW_FILTER,
-    filter
-})
-
 export const selectMenutItem = (item) => ({
     type: SELECT_MENU_ITEM,
     item
+})
+
+export const setMenuViewFilter = ( filter = MenuViewFilters.SHOW_DEFAULT ) => ({
+    type: SET_MENU_VIEW_FILTER,
+    filter
 })
 
 export const setChangePasswordViewFilter = ( filter = MenuViewFilters.SHOW_DEFAULT ) => ({
@@ -73,6 +73,11 @@ export const changePasswordFailed = (error) => ({
 export const changePasswordSuccess = () => ({
     type: CHANGE_PASSWORD_SUCCESS
 })
+
+export function selectItem() {
+    // @todo must use Promise to resolve request
+    return selectMenutItem
+}
 
 // async action creator
 export function changePassword(oldPasssword, newPassword) { 
