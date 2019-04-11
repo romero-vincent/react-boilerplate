@@ -22,13 +22,16 @@ class App extends Component {
                 <button ref={this.buttonRef}>Open Me</button>
 
                 <AddTodo/>
+
                 <div className="ProfileDropDown">
+                    {/* view, isVisible */}
                     <section className="ProfileDropDown__UserInfo" >
                         {/* userName, userOrganization?, isUserAdmin, adminBadgeLabel? */}
                     </section>
 
                     <section className="ProfileDropDown__Menu">
-                        {/* menuItems, onSelect */}
+                        {/* view */}
+                        
                         <div className="Menu__defaultView">
                             {/* menuItems, onSelect */}
                         </div>
@@ -38,11 +41,12 @@ class App extends Component {
                     </section>
                     
                     <section className="ProfileDropDown__ChangePasswordForm">
+                        {/* view, onChangePasswordRequest, onChangePassswordFailed, onChangePasswordSuccess */}
                         <div className="ChangePasswordForm__formView">
-                            {/* passwordPolicyText, validations, errorMessages, onSubmit  */}
+                            {/* policyText, validations, errors, onChangePasswordRequest::onSubmit, onChangePassswordFailed::onError */}
                         </div>
                         <div className="ChangePasswordForm__successView">
-                            {/* onSuccessMessage */}
+                            {/* message */}
                         </div>
                     </section>
                 </div>
