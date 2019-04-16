@@ -16,32 +16,32 @@
   </body>
 
   <script async type="text/javascript">
-    // AppController['$inject'] = ['$scope', '$window']
-    // function AppController($scope, $window) {
-    //     var vm = this;  
-    //     vm.todos = []
-    //     window.$store.subscribe(function() {
-    //       vm.todos = window.$store.getState()['todos']
-    //       $scope.$apply()
-    //     })
-    // };
+    AppController['$inject'] = ['$scope', '$window']
+    function AppController($scope, $window) {
+        var vm = this;  
+        vm.todos = []
+        window.$store.subscribe(function() {
+          vm.todos = window.$store.getState()['todos']
+          $scope.$apply()
+        })
+    };
 
-    // var directive = function () {
-    //     return {
-    //       scope: { todos: '@' },
-    //       template: `
-    //         Todo List (NG)
-    //         <ol>
-    //           <li ng-repeat="todo in $scope.todos track by $index">
-    //             {{todo.text}}
-    //           </li>
-    //         <ol>
-    //       `
-    //     };
-    // };
+    var directive = function () {
+        return {
+          scope: { todos: '@' },
+          template: `
+            Todo List (NG)
+            <ol>
+              <li ng-repeat="todo in $scope.todos track by $index">
+                {{todo.text}}
+              </li>
+            <ol>
+          `
+        };
+    };
 
-    // angular.module('myApp', [])
-    //     .controller('AppController', AppController)
-    //     .directive('ngTodoList', directive);
+    angular.module('myApp', [])
+        .controller('AppController', AppController)
+        .directive('ngTodoList', directive);
   </script>
 </html>
