@@ -11,8 +11,7 @@ import './fonts/style.css'
 import loggerMiddleware from './redux/middleware/logger';
 import thunkMiddleware from './redux/middleware/thunk';
 
-let store;
-window.$store = store = createStore(rootReducer, applyMiddleware(thunkMiddleware, loggerMiddleware));
+window.$store = createStore(rootReducer, applyMiddleware(thunkMiddleware, loggerMiddleware));
 
 ReactDOM.render(
     <Provider store={window.$store}>

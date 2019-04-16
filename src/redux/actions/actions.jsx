@@ -34,7 +34,7 @@ export const selectMenuItem = (item) => ({
 export function selectItem(item) {
     let callback = (item && item.onSelect) ? item.onSelect : null;
     return (dispatch) => {
-        let dispatchSelectedItem = async () => {
+        const dispatchSelectedItem = async () => {
             dispatch(selectMenuItem(item))
         };
 
@@ -78,7 +78,7 @@ export function changePassword(oldPasssword, newPassword) {
     console.log('attempt to change pw', oldPasssword, newPassword)
     return (dispatch, getState) => {
 
-        let sendChangePasswordRequest = async () => {
+        const sendChangePasswordRequest = async () => {
             dispatch(changePasswordSent())
         };
 
