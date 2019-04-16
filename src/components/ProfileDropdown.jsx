@@ -38,14 +38,13 @@ const ProfileDropdown = ({ view, userInfo, menuItems, menuHeading }) => {
     );
 }
 
-
 const mapStatesToProps = (state, ownProps) => {
     return {
         view: state.profileDropdown.view,
         menuItems: ownProps.menuItems,
         menuHeading: ownProps.menuHeading,
         userInfo: ownProps.userInfo
-    }
+    };
 }
 
 export default connect(mapStatesToProps)(ProfileDropdown);

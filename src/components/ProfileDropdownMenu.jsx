@@ -3,15 +3,17 @@ import PropTypes from 'prop-types'
 import { Container, Row, Column, Text, Link } from '@ticketmaster/aurora'
 
 
+
 import { connect } from 'react-redux'
 import { MenuViewFilters, ViewFilters } from '../constants'
+import { selectItem } from '../redux/actions/actions'
 
 
 const mapStatesToProps = (state, ownProps) => {
     return {
-        items : ownProps.items,
+        items: ownProps.items,
         heading: ownProps.heading,
-        view : state.profileDropdown.menuView
+        view: state.profileDropdown.menuView
     }
 }
 
@@ -20,18 +22,22 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-const ProfileMenu = ({ items, heading, view }) => {
+const ProfileMenu = ({ items, heading, view, dispatch }) => {
+
+    let handleItemSelection = (item) => {
+        dispatch(selectItem(item))
+    }
 
     let renderHeading = () => {
         return (MenuViewFilters.SHOW_LATEST === view)
-            ? <Text size="kilo" weight="extraBold">{ heading }</Text>
+            ? <Text size="kilo" weight="extraBold">{heading}</Text>
             : null
     }
-    
+
     let renderItems = () => {
         return (
             <ul>{
-                items.map(item => { return <li><Link onClick={ item.onSelect }>{ item.label }</Link></li>})
+                items.map((item, index) => { return <li key={index}><Link onClick={() => handleItemSelection(item)}>{item.label}</Link></li> })
             }</ul>
         );
     }
@@ -40,13 +46,13 @@ const ProfileMenu = ({ items, heading, view }) => {
         <Container>
             <Row>
                 <Column small={12} medium={12} large={12}>
-                    { renderHeading() }
-                    { renderItems() }
+                    {renderHeading()}
+                    {renderItems()}
                 </Column>
             </Row>
         </Container>
-            
-    );       
+
+    );
 }
 
 ProfileMenu.propTypes = {
@@ -59,4 +65,4 @@ ProfileMenu.defaultProps = {
     items: []
 }
 
-export default connect(mapStatesToProps)(ProfileMenu);
+export default connect(mapStatesToProps, null)(ProfileMenu);

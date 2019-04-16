@@ -1,5 +1,5 @@
-import { ViewFilters, MenuViewFilters } from '../../constants'
-
+import { ViewFilters, MenuViewFilters, ChangePasswordViewFilters } from '../../constants'
+let async = require('async')
 // types
 export const CLOSE_DROPDOWN = 'CLOSE_DROPDOWN'
 export const TOGGLE_DROPDOWN = 'TOGGLE_DROPDOWN'
@@ -16,27 +16,40 @@ export const CHANGE_PASSWORD_FAILED = 'CHANGE_PASSWORD_FAILED'
 export const CHANGE_PASSWORD_SUCCESS = 'CHANGE_PASSWORD_SUCCESS'
 
 // creators
-export const toggleDropdown = ( isVisible = false ) => ({
+export const toggleDropdown = (isVisible = false) => ({
     type: TOGGLE_DROPDOWN,
     isVisible
 })
 
-export const setViewFilter = ( filter = ViewFilters.SHOW_MENU ) => ({
+export const setViewFilter = (filter = ViewFilters.SHOW_MENU) => ({
     type: SET_VIEW_FILTER,
     filter
 })
 
-export const selectMenutItem = (item) => ({
+export const selectMenuItem = (item) => ({
     type: SELECT_MENU_ITEM,
     item
 })
 
-export const setMenuViewFilter = ( filter = MenuViewFilters.SHOW_DEFAULT ) => ({
+export function selectItem(item) {
+    let callback = (item && item.onSelect) ? item.onSelect : null;
+    return (dispatch) => {
+        let dispatchSelectedItem = async () => {
+            dispatch(selectMenuItem(item))
+        };
+
+        dispatchSelectedItem().then(() => {
+            if (callback !== null) callback();
+        });
+    };
+}
+
+export const setMenuViewFilter = (filter = MenuViewFilters.SHOW_DEFAULT) => ({
     type: SET_MENU_VIEW_FILTER,
     filter
 })
 
-export const setChangePasswordViewFilter = ( filter = MenuViewFilters.SHOW_DEFAULT ) => ({
+export const setChangePasswordViewFilter = (filter = MenuViewFilters.SHOW_DEFAULT) => ({
     type: SET_CHANGE_PASSWORD_VIEW_FILTER,
     filter
 })
@@ -55,33 +68,29 @@ export const changePasswordFailed = (error) => ({
     error
 })
 
-export const changePasswordSuccess = () => ({
-    type: CHANGE_PASSWORD_SUCCESS
-})
-
-export function selectItem() {
-    // @todo must use Promise to resolve request
-    return selectMenutItem
-}
+export const changePasswordSuccess = () => {
+    return setChangePasswordViewFilter(ChangePasswordViewFilters.SHOW_SUCCESS_MESSAGE);
+};
 
 // async action creator
-export function changePassword(oldPasssword, newPassword) { 
+export function changePassword(oldPasssword, newPassword) {
+    //@todo
     console.log('attempt to change pw', oldPasssword, newPassword)
-    return async (dispatch, getState) => {
-        console.log(dispatch, getState)
-        try {
-            dispatch(changePasswordSuccess());
-        } catch(error) {
-            dispatch(changePasswordFailed(error));
-        }
-      
-          return 'done';
+    return (dispatch, getState) => {
+
+        let sendChangePasswordRequest = async () => {
+            dispatch(changePasswordSent())
+        };
+
+        sendChangePasswordRequest()
+            .then(dispatch(changePasswordSuccess()))
+            .catch(dispatch(changePasswordFailed('OOPs')))
     }
 }
 
 export function closeDropdown() {
     // use thunk
     // @todo must dispatch action to reset Menu View and Passwod View
-    
+
 }
 

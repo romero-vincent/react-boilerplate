@@ -7,6 +7,8 @@ import {
     CHANGE_PASSWORD_SENT,
 } from '../actions/actions'
 
+import { ChangePasswordViewFilters } from '../../constants'
+
 const profileDropdown = (state = [], action) => {
     
     switch(action.type) {
@@ -38,7 +40,10 @@ const profileDropdown = (state = [], action) => {
             return state;
 
         case CHANGE_PASSWORD_SUCCESS:
-            return state;
+            return {
+                ...state,
+                changePasswordView: action.filter
+            };
             
         default:
             return state;
