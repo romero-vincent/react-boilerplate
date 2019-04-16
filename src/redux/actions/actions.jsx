@@ -66,8 +66,17 @@ export function selectItem() {
 
 // async action creator
 export function changePassword(oldPasssword, newPassword) { 
-    // @todo must use Promise to resolve request
-    return changePasswordSuccess
+    console.log('attempt to change pw', oldPasssword, newPassword)
+    return async (dispatch, getState) => {
+        console.log(dispatch, getState)
+        try {
+            dispatch(changePasswordSuccess());
+        } catch(error) {
+            dispatch(changePasswordFailed(error));
+        }
+      
+          return 'done';
+    }
 }
 
 export function closeDropdown() {

@@ -15,6 +15,10 @@ const mapStatesToProps = (state, ownProps) => {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+
 
 const ProfileMenu = ({ items, heading, view }) => {
 

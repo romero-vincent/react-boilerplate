@@ -63,7 +63,7 @@ class ProfileDropDown extends Component {
         };
 
         return (
-            <PopOver spaceFromMouse={30}  isVisible={ showPopOver }>
+            <PopOver spaceFromMouse={30}  isVisible={ true }>
                 <ProfileCrumb
                     userFullName={ userFullName }
                     userOrganization={ userOrganization }

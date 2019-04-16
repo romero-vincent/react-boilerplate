@@ -28,6 +28,12 @@ class App extends Component {
                 <AddTodo/>
 
                 <ProfileDropdown
+                    userInfo={{
+                        name: 'Jane Doe',
+                        organization: 'TM1 Global Support',  
+                        isAdmin: true,
+                    }}
+                    passwordForm
                     menuHeading="My Acccount"
                     menuItems={[
                             { name:'', label: 'Access Settings', onSelect: () => {}},

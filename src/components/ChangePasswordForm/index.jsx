@@ -93,25 +93,25 @@ class ChangePasswordForm extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        let { isPasswordConfirmed, isPristine } = this.state;
-        let isValid = false;
+        // let { isPasswordConfirmed, isPristine } = this.state;
+        // let isValid = false;
 
-        if (this.isInputValid(this.newPasswordElement)
-            && this.isInputValid(this.oldPasswordElement)
-            && isPasswordConfirmed){
-            isValid = true;
-        }
+        // if (this.isInputValid(this.newPasswordElement)
+        //     && this.isInputValid(this.oldPasswordElement)
+        //     && isPasswordConfirmed){
+        //     isValid = true;
+        // }
 
-        console.info('submit isValid', isPasswordConfirmed)
+        // console.info('submit isValid', isPasswordConfirmed)
 
-        if (!(!isPristine && isValid)) {
-            return;
-        }
+        // if (!(!isPristine && isValid)) {
+        //     return;
+        // }
 
         let {onSubmit} = this.props;
         let newPassword = this.newPasswordElement.state.value;
         let oldPassword = this.oldPasswordElement.state.value;
-        console.info('callback with', newPassword, oldPassword)
+        // console.info('callback with', newPassword, oldPassword)
         if (onSubmit) onSubmit(newPassword, oldPassword);
         
     }

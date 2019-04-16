@@ -1,38 +1,50 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { PopOver } from '@ticketmaster/aurora'
 
 import { ViewFilters } from '../constants'
 
+import ProfileDropdownUser from './ProfileDropdownUser'
 import ProfileDropdownMenu from './ProfileDropdownMenu'
-import ManagedProfileDropdownForm from './ManagedProfileDropdownForm'
+import ProfileDropdownForm from './ProfileDropdownForm'
 
-const ProfileDropdown = ({view, menuItems, menuHeading}) => {
+const ProfileDropdown = ({ view, userInfo, menuItems, menuHeading }) => {
+
+    let renderUserInfo = () => {
+        let { name, organization, isAdmin, badgeLabel } = userInfo;
+        return <ProfileDropdownUser userFullName={name}
+            userOrganization={organization}
+            isUserAdmin={isAdmin}
+            badgeLabel={badgeLabel} />
+    }
 
     let renderView = () => {
         if (view === ViewFilters.SHOW_CHANGE_PASSWORD) {
-            return <ManagedProfileDropdownForm onSubmit={() => {}} onCancel={ ()=> {}} />
+            return <ProfileDropdownForm />
         } else {
-            return <ProfileDropdownMenu heading={ menuHeading } items={ menuItems } />
+            return <ProfileDropdownMenu heading={menuHeading}
+                items={menuItems} />
         }
     }
-    
+
     return (
-        <div className="ProfileDropDown">
-            {/* isVisible */}
-            <section className="ProfileDropDown__UserInfo" >
-                User Info
-            </section>
-            { renderView() }
-        </div>
+        <PopOver spaceFromMouse={30} isVisible={true}>
+            <div className="ProfileDropDown">
+                {/* isVisible */}
+                {renderUserInfo()}
+                {renderView()}
+            </div>
+        </PopOver>
     );
 }
 
 
 const mapStatesToProps = (state, ownProps) => {
     return {
-        view : state.profileDropdown.view,
-        menuItems : ownProps.menuItems,
-        menuHeading: ownProps.menuHeading
+        view: state.profileDropdown.view,
+        menuItems: ownProps.menuItems,
+        menuHeading: ownProps.menuHeading,
+        userInfo: ownProps.userInfo
     }
 }
 

@@ -3,6 +3,8 @@ import {
     SET_VIEW_FILTER,
     SET_MENU_VIEW_FILTER,
     SET_CHANGE_PASSWORD_VIEW_FILTER,
+    CHANGE_PASSWORD_SUCCESS,
+    CHANGE_PASSWORD_SENT,
 } from '../actions/actions'
 
 const profileDropdown = (state = [], action) => {
@@ -32,6 +34,12 @@ const profileDropdown = (state = [], action) => {
                 changePasswordView: action.filter
             };
 
+        case CHANGE_PASSWORD_SENT:
+            return state;
+
+        case CHANGE_PASSWORD_SUCCESS:
+            return state;
+            
         default:
             return state;
     }
