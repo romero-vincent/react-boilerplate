@@ -38,12 +38,6 @@ const profileDropdown = (state = [], action) => {
 
         case CHANGE_PASSWORD_SENT:
             return state;
-
-        case CHANGE_PASSWORD_SUCCESS:
-            return {
-                ...state,
-                changePasswordView: action.filter
-            };
             
         default:
             return state;

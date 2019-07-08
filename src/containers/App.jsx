@@ -5,7 +5,7 @@ import { PopOver } from '@ticketmaster/aurora'
 import { connect } from 'react-redux'
 
 import { ViewFilters, MenuViewFilters } from '../constants'
-import { setViewFilter, setMenuViewFilter } from '../redux/actions/actions'
+import { setViewFilter, setMenuViewFilter, selectMenutItem } from '../redux/actions/actions'
 
 import ProfileDropdown from '../components/ProfileDropdown'
 
@@ -32,18 +32,21 @@ class App extends Component {
                         name: 'Jane Doe',
                         organization: 'TM1 Global Support',  
                         isAdmin: true,
+                        badgeLabel: ""
                     }}
-                    passwordForm
                     menuHeading="My Acccount"
                     menuItems={[
                             { name:'', label: 'Access Settings', onSelect: () => {}},
-                            { name:'', label: 'Profile Settings', onSelect: () => {}},
+                            { name:'', label: 'Profile Settings', onSelect: () => {
+                                // note; angular would listen to same store dispatch;
+                                this.props.dispatch(selectMenutItem())
+                            }},
                             { name:'', label: 'Change Password', onSelect: () => {
                                 this.props.dispatch(setViewFilter(ViewFilters.SHOW_CHANGE_PASSWORD))
                             }},
                             { name:'', label: 'Sign Out', onSelect:  () => {}},
                         ]}>
-                    
+                    onChangePasswordSubmit
                 </ProfileDropdown>
 
                 <button onClick={() => {
